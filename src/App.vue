@@ -1,10 +1,31 @@
 <script>
+
+// import { mounted } from 'vue'
 import CardWeather from './components/CardWeather.vue'
+const API_KEY = 'f536e1ca42c2bff4d16aaae204679730'
 export default {
   components: {
     CardWeather,
   },
+  data () {
+    return {
+      dataWeather: null,
+    }
+
+  },
+  methods: {
+    getWeatherData() {
+      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&units=metric&appid=${API_KEY}`)
+      .then(res => res.json())
+      .then(data => this.dataWeather = data)
+    }
+  },
+  mounted() {
+    this.getWeatherData()
+  }
 }
+
+
 </script>
 
 <template>
@@ -14,7 +35,8 @@ export default {
       <div><span>iamswapnil </span> | <span>UI Designer</span></div>
 
       <div class="container__card">
-        <CardWeather />
+        {{ dataWeather }}
+        <CardWeather :dataWeather="dataWeather" />
         <CardWeather />
         <CardWeather />
       </div>
