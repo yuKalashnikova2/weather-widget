@@ -1,12 +1,12 @@
 <script>
 import CardWeather from './components/CardWeather.vue'
 import Loader from './components/Loader.vue'
-const API_KEY = 'f536e1ca42c2bff4d16aaae204679730'
+import { API_KEY } from './constants.js'
 
 export default {
   components: {
     CardWeather,
-    Loader
+    Loader,
   },
   data() {
     return {
@@ -49,13 +49,14 @@ export default {
   <div class="container">
     <h1>Weather Widget Design</h1>
     <div class="container__true">
-      <div><span>iamswapnil </span> | <span>UI Designer</span></div>
+      <div class="container__title">
+        <span>iamswapnil </span> | <span>UI Designer</span>
+      </div>
 
       <div class="container__card">
         <Loader v-if="dataWeather === null" />
         <CardWeather v-else :dataWeather="dataWeather" />
       </div>
-  
     </div>
   </div>
 </template>
@@ -65,11 +66,15 @@ export default {
   padding: 70px 77px;
   margin: auto;
   height: 100vh;
+
   h1 {
     color: #322f2f;
     font-size: 48px;
     font-weight: 700;
     margin-bottom: 18px;
+    @media (max-width: 767px) {
+      text-align: center;
+    }
   }
   span {
     color: #5f5757;
@@ -79,6 +84,11 @@ export default {
   &__true {
     display: flex;
     justify-content: space-between;
+  }
+  &__title {
+    @media (max-width: 767px) {
+      display: none;
+    }
   }
   &__card {
     margin: 0 auto;

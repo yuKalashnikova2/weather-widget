@@ -36,10 +36,8 @@ export default {
       <div class="card__weather-info-descr">
         <div>
           <span>{{ dataWeather?.weather[0].main }}</span>
-          <span
-            >{{ Math.round(dataWeather?.main.temp_min) }}° /
-            {{ Math.round(dataWeather?.main.temp_max) }}°</span
-          >
+          <span>{{ Math.round(dataWeather?.main.temp_min) }}° /
+            {{ Math.round(dataWeather?.main.temp_max) }}°</span>
         </div>
         <div class="card__weather-info-icon">
           
