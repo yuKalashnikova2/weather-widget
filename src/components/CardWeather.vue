@@ -31,7 +31,7 @@ export default {
       <h2 class="card__weather-title-name">
         {{ Math.round(dataWeather?.main.temp) }}°
       </h2>
-      <span class="card__weather-title-city">{{ dataWeather?.name }}</span>
+      <span class="card__weather-title-city">{{ dataWeather?.name ? dataWeather?.name : 'City undefined' }}</span>
     </div>
     <div class="card__weather-info">
       <div class="card__weather-info-week">{{ dayWeek.toLocaleString('en', {weekday: 'long'}) }}, {{ dateNow }}</div>
