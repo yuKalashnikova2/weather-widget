@@ -16,10 +16,7 @@ export default {
   },
   methods: {
     styleBackground(obj) {
-      console.log( 'rabotaet', obj)
       return Math.round(obj) < 7 ? '' : 'card__weather_background-yellow' ? Math.round(obj) > 15 && Math.round(obj) < 23 : 'card__weather_background-red'
-      
-      
     }
   },
 }
