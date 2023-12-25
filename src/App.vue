@@ -1,10 +1,12 @@
 <script>
 import CardWeather from './components/CardWeather.vue'
+import Loader from './components/Loader.vue'
 const API_KEY = 'f536e1ca42c2bff4d16aaae204679730'
 
 export default {
   components: {
     CardWeather,
+    Loader
   },
   data() {
     return {
@@ -50,8 +52,10 @@ export default {
       <div><span>iamswapnil </span> | <span>UI Designer</span></div>
 
       <div class="container__card">
-        <CardWeather :dataWeather="dataWeather" />
+        <Loader v-if="dataWeather === null" />
+        <CardWeather v-else :dataWeather="dataWeather" />
       </div>
+  
     </div>
   </div>
 </template>
