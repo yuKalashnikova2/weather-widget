@@ -3,45 +3,58 @@ import { format } from 'date-fns'
 export default {
   data() {
     return {
-      dateNow: format(new Date(), 'dd/MM'),
       dayWeek: new Date(),
-      dataTemp: this.dataWeather?.main.temp,
     }
   },
   props: {
-    dataWeather: {
-      type: [Object, null],
+    temp: {
+      type: Number,
+      required: true,
+    },
+    cityName: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      default: 'Here description',
+    },
+    tempMin: {
+      type: Number,
+      default: 0,
+    },
+    tempMax: {
+      type: Number,
+      default: 0,
+    },
+    iconDescr: {
+      type: String,
       required: true,
     },
   },
   methods: {
     styleBackground(obj) {
-      console.log(obj)
       if (Math.round(obj) < 7) {
         return ''
-      } else if (Math.round(obj) > 15 && Math.round(obj) < 23) {
-        return 'card__weather_background-red'
-      } else {
+      } else if (Math.round(obj) > 7 && Math.round(obj) < 26) {
         return 'card__weather_background-yellow'
+      } else {
+        return 'card__weather_background-red'
       }
     },
+  },
+  computed: {
+    dateNow: format(new Date(), 'dd/MM'),
   },
 }
 </script>
 
 <template>
-  <div
-    :class="[
-      'card__weather',
-      styleBackground(Math.round(dataWeather?.main.temp)),
-    ]"
-  >
+  <div :class="['card__weather', styleBackground(Math.round(temp))]">
     <div class="card__weather-title">
-      <h2 class="card__weather-title-name">
-        {{ Math.round(dataWeather?.main.temp) }}°
-      </h2>
+      <h2 class="card__weather-title-name">{{ Math.round(temp) }}°</h2>
       <span class="card__weather-title-city">{{
-        dataWeather?.name ? dataWeather?.name : 'City undefined'
+        cityName ? cityName : 'City undefined'
       }}</span>
     </div>
     <div class="card__weather-info">
@@ -51,16 +64,13 @@ export default {
 
       <div class="card__weather-info-descr">
         <div>
-          <span>{{ dataWeather?.weather[0].main }}</span>
-          <span
-            >{{ Math.round(dataWeather?.main.temp_min) }}° /
-            {{ Math.round(dataWeather?.main.temp_max) }}°</span
-          >
+          <span>{{ description }}</span>
+          <span>{{ Math.round(tempMin) }}° / {{ Math.round(tempMax) }}°</span>
         </div>
         <div class="card__weather-info-icon">
           <img
-            :src="`https://openweathermap.org/img/wn/${dataWeather?.weather[0].icon}.png`"
-            :alt="dataWeather?.weather[0].icon"
+            :src="`https://openweathermap.org/img/wn/${iconDescr}.png`"
+            :alt="iconDescr"
           />
         </div>
       </div>

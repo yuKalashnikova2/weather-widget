@@ -29,7 +29,6 @@ export default {
         this.getWeatherData(this.latitude, this.longitude)
       })
     },
-
     async getWeatherData(latitude, longitude) {
       const res = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`
@@ -52,10 +51,16 @@ export default {
       <div class="container__title">
         <span>iamswapnil </span> | <span>UI Designer</span>
       </div>
-
       <div class="container__card">
         <Loader v-if="dataWeather === null" />
-        <CardWeather v-else :dataWeather="dataWeather" />
+        <CardWeather v-else
+        :temp="dataWeather?.main.temp"
+        :cityName="dataWeather?.name"
+        :description="dataWeather?.weather[0].main"
+        :tempMin="dataWeather?.main.temp_min"
+        :tempMax="dataWeather?.main.temp_max"
+        :iconDescr="dataWeather?.weather[0].icon"
+         />
       </div>
     </div>
   </div>
