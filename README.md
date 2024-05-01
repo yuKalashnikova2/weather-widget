@@ -1,7 +1,10 @@
-# Vue 3 + Vite
+# Описание
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Проект "Виджет погоды" - это интерактивный виджет, который позволяет просматривать текущую погоду и прогноз на несколько дней. Разработанный с использованием Vue 3 и Vite, этот виджет обеспечивает удобный способ отслеживать изменения погоды в выбранном месте.
 
-## Recommended IDE Setup
+## Технологии:
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- Vue 3 - основной фреймворк
+- Vite - для сборки и развертывания проекта
+- Date-fns - для работы с датами и временем
+- Sass и Sass-loader - для стилизации виджета
